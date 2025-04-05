@@ -4,6 +4,7 @@ const { Server } = require("socket.io");
 
 const app = express();
 const server = createServer(app);
+require("dotenv").config();
 
 const io = new Server(server, {
   // <--- Add options object here
