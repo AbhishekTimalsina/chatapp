@@ -10,12 +10,10 @@ const { job } = require("./cron.js");
 job.start();
 
 const io = new Server(server, {
-  // <--- Add options object here
   cors: {
-    origin: "*", // Allow all origins (for development)
-    // For production, replace "*" with your specific client URL like "http://your-client-domain.com"
-    // origin: "http://localhost:3000", // Example if your React app runs on 3000
-    methods: ["GET", "POST"], // Allowed HTTP methods
+    origin: "*",
+
+    methods: ["GET", "POST"],
   },
 });
 
