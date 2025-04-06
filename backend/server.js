@@ -5,6 +5,9 @@ const { Server } = require("socket.io");
 const app = express();
 const server = createServer(app);
 require("dotenv").config();
+const { job } = require("./cron.js");
+
+job.start();
 
 const io = new Server(server, {
   // <--- Add options object here
@@ -31,6 +34,8 @@ const roomUsers = {};
 io.on("connection", (socket) => {
   let currentRoom = null;
   let username = "";
+
+  socket.send("connected");
 
   socket.on("disconnect", () => {
     if (currentRoom) {
